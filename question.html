@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li{
+      list-style: lower-alpha ;
+      height: 20px;
+      width: 150px;
+      background-color: rgb(232, 169, 169);
+      color: brown;
+      text-align: center;
+    }
+    ul{
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+    }
+    #div1{
+        font-size: 50px;
+    }
+    #container{
+        padding-top: 50px;
+        text-align: center;
+    }
+
+</style>
+<body>
+<div id="container">
+    <div id="div1"></div>
+        <ul id="optionslist">
+
+        </ul>
+    </div>
+    <button onclick="prev()">prev</button>
+    <button onclick="next()">next</button>
+ </div>
+
+</body>
+<script>
+    let questions = [
+        {
+            question: "WHAT IS YOUR NAME?",
+            options: ["Shubbie", "Aleem", "Afolabi", "Mariam"]
+        },
+        {
+            question: "WHERE ARE YOU FROM?",
+            options: ["Ijebu Igbo", "Lagos", "Ibadan", "ijebu Ode"]
+        },
+        {
+            question: "WHAT IS YOUR BEST FOOD?",
+            options: ["Rice and Turkey", "Amala", "Yam and Egg", "Indomie and Egg"]
+        }
+    ];
+
+    let index = 0;
+
+    function dispQuestion() {
+        div1.innerHTML= ""
+        div1.innerHTML = questions[index].question;
+    }
+    dispQuestion();
+
+    function dispOptions() {
+        optionslist.innerHTML = ""
+        let options1 = questions[index].options;
+        for (i = 0; i < options1.length; i++) {
+            optionslist.innerHTML += "<li>" + options1[i] + "</li>"
+        }
+ }
+    dispOptions();
+    
+
+    function prev() {
+        index--;
+        if (index < 0) {
+            index = questions.length - 1;
+        }
+        div1.innerHTML= ""
+        div1.innerHTML = questions[index].question;
+
+        optionslist.innerHTML = ""
+        let options1 = questions[index].options;
+        for (i = 0; i < options1.length; i++) {
+            optionslist.innerHTML += "<li>" + options1[i] + "</li>"
+        }
+    }
+
+   function next() {
+        index++;
+        if (index >= questions.length) {
+            index = 0;
+        };
+        div1.innerHTML= ""
+        div1.innerHTML = questions[index].question;
+
+        optionslist.innerHTML = ""
+        let options1 = questions[index].options;
+        for (i = 0; i < options1.length; i++) {
+            optionslist.innerHTML += "<li>" + options1[i] + "</li>"
+        }
+    }
+
+</script>
+
+</html>
